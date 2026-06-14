@@ -25,3 +25,34 @@ const typeColors = {
   steel: "#b8b8d0",
   flying: "#93b8e2",
 };
+
+// პოკემონის ID-ის დამატებით ნულები (001, 002, 003, ...)
+function pad(id) {
+  return String(id).padStart(3, "0");
+}
+
+// პოკემონის სურათი
+function getPokemonPicture(pokemon) {
+  return pokemon.sprites.other["official-artwork"].front_default || pokemon.sprites.front_default;
+}
+
+// ერთი პოკემონის მონაცემები API-დან (cache-ით)
+async function getPokemonData(pokemon) {
+  if(cache[pokemon]) {
+    return cache[pokemon];
+  }
+
+  let response = await fetch(API + pokemon);
+  let data = await response.json();
+  cache[pokemon] = data;
+  return data;
+}
+
+async function getPokemonList(page) {
+  currentPage = page;
+  let grid = document.getElementById("grid");
+  grid.innerText = "იტვირთება...";
+
+  let start = (page - 1) * PER_PAGE + 1;
+  let end = Math.min(start + PER_PAGE - 1, MAX);
+}
