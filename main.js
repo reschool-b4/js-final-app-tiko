@@ -65,6 +65,7 @@ async function getPokemonList(page) {
   for (let pokemon of list) {
     grid.appendChild(makeCard(pokemon));
   }
+  renderPagination();
 }
 
 function makeCard(pokemon) {
@@ -76,16 +77,38 @@ function makeCard(pokemon) {
  
   // ტიპების badge-ები
   let badges = "";
-  for (let t of p.types) {
-    badges += "<span class='badge'>" + t.type.name + "</span>";
+  for (let type of pokemon.types) {
+    badges += "<span class='badge'>" + type.type.name + "</span>";
   }
  
   card.innerHTML =
-    "<span class='card-id'>#" + pad(p.id) + "</span>" +
-    "<div class='card-name'>" + p.name + "</div>" +
+    "<span class='card-id'>#" + pad(pokemon.id) + "</span>" +
+    "<div class='card-name'>" + pokemon.name + "</div>" +
     "<div class='card-badges'>" + badges + "</div>" +
-    "<img class='card-img' src='" + artwork(p) + "' alt='" + p.name + "'>";
+    "<img class='card-img' src='" + getPokemonPicture(pokemon) + "' alt='" + pokemon.name + "'>";
  
   return card;
-
 }
+
+// გვერდების ნავიგაციის განახლება (წინა / შემდეგი + ნომერი)
+function renderPagination() {
+  let totalPages = Math.ceil(MAX / PER_PAGE);
+  document.getElementById("pageInfo").textContent = "გვერდი " + currentPage + " / " + totalPages;
+ 
+  // პირველ გვერდზე "წინა" გათიშულია, ბოლო გვერდზე - "შემდეგი"
+  document.getElementById("prevBtn").disabled = (currentPage === 1);
+  document.getElementById("nextBtn").disabled = (currentPage === totalPages);
+}
+
+// "წინა" ღილაკი
+function prevPage() {
+  if (currentPage > 1) getPokemonList(currentPage - 1);
+}
+ 
+// "შემდეგი" ღილაკი
+function nextPage() {
+  let totalPages = Math.ceil(MAX / PER_PAGE);
+  if (currentPage < totalPages) getPokemonList(currentPage + 1);
+}
+
+getPokemonList(1);

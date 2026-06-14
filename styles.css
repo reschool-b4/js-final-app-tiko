@@ -1,73 +1,134 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Nunito", sans-serif;
-    background-color: #eceffb;
-    display: flex;
-    justify-content: center;
-    padding: 24px 12px;
-    color: #2b2b3a;
+  font-family: "Nunito", sans-serif;
+  background-color: #eceffb;
+  display: flex;
+  justify-content: center;
+  padding: 24px 12px;
+  color: #2b2b3a;
 }
 
 .phone {
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    width: 100%;
-    max-width: 460px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
 }
 
 .phone .topbar .topbar-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .phone .topbar .topbar-row span {
-    font-size: 28px;
-    color: gray;
+  font-size: 28px;
+  color: gray;
 }
 
 .phone .topbar p {
-    color: gray;
-    font-weight: 600;
+  color: gray;
+  font-weight: 600;
 }
 
 .phone .grid {
-    padding: 24px 0;
+  padding: 24px 0;
 }
 
 .phone .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
 }
 
 .phone .pagination button {
-    background-color: #597bfd;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
-    cursor: pointer;
+  background-color: #597bfd;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .phone .pagination button:hover {
-    background-color: #405de0;
+  background-color: #405de0;
 }
 
 .phone .pagination span {
-    color: gray;
-    font-weight: 600;
+  color: gray;
+  font-weight: 600;
 }
 
 .phone .pagination button:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ორი სვეტი */
+  gap: 14px;
+  padding: 16px 20px;
+}
+
+.card {
+  position: relative;
+  min-height: 112px;
+  border-radius: 18px;
+  padding: 14px 16px;
+  color: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card-img {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  width: 64px;
+  height: 64px;
+  z-index: 2;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.card-id {
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0.55;
+}
+
+.card-name {
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin-top: 2px;
+}
+
+.card-badges {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 3px 9px;
+  border-radius: 10px;
 }
