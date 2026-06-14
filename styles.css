@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eceffb;
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px;
+    color: #2b2b3a;
+}
+
+.phone {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 460px;
+}
+
+.phone .topbar .topbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.phone .topbar .topbar-row span {
+    font-size: 28px;
+    color: gray;
+}
+
+.phone .topbar p {
+    color: gray;
+    font-weight: 600;
+}
+
+.phone .grid {
+    padding: 24px 0;
+}
+
+.phone .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.phone .pagination button {
+    background-color: #597bfd;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.phone .pagination button:hover {
+    background-color: #405de0;
+}
+
+.phone .pagination span {
+    color: gray;
+    font-weight: 600;
+}
+
+.phone .pagination button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}

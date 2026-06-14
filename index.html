@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>here is changed h1</h1>
-    
+    <div class="phone">
+        <header class="topbar">
+            <div class="topbar-row">
+                <h1>Pokedex</h1>
+                <span class="pockemon-icon">&#9827;</span>
+            </div>
+            <p>აირჩიეთ პოკემონი დეტალების სანახავად</p>
+        </header>
+
+        <div id="grid" class="grid"></div>
+
+        <div class="pagination">
+            <button id="prevBtn" onclick="prevPage()">წინა</button>
+            <span id="pageInfo">გვერდი 1</span>
+            <button id="nextBtn" onclick="nextPage()">შემდეგი</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
