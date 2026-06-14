@@ -55,4 +55,37 @@ async function getPokemonList(page) {
 
   let start = (page - 1) * PER_PAGE + 1;
   let end = Math.min(start + PER_PAGE - 1, MAX);
+
+  let requests = [];
+  for(let id = start; id <= end; id++) {
+    requests.push(getPokemonData(id));
+  }
+  let list = await Promise.all(requests);
+  grid.innerHTML = "";
+  for (let pokemon of list) {
+    grid.appendChild(makeCard(pokemon));
+  }
+}
+
+function makeCard(pokemon) {
+  let mainType = pokemon.types[0].type.name;
+
+  let card = document.createElement("div");
+  card.className = "card";
+  card.style.background = typeColors[mainType] || "#999";
+ 
+  // ტიპების badge-ები
+  let badges = "";
+  for (let t of p.types) {
+    badges += "<span class='badge'>" + t.type.name + "</span>";
+  }
+ 
+  card.innerHTML =
+    "<span class='card-id'>#" + pad(p.id) + "</span>" +
+    "<div class='card-name'>" + p.name + "</div>" +
+    "<div class='card-badges'>" + badges + "</div>" +
+    "<img class='card-img' src='" + artwork(p) + "' alt='" + p.name + "'>";
+ 
+  return card;
+
 }
